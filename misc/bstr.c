@@ -412,7 +412,7 @@ void bstr_xappend_vasprintf(void *talloc_ctx, bstr *s, const char *fmt,
     if (size < 0)
         abort();
 
-    if (avail < 1 || size > avail) {
+    if (avail < 1 || size >= avail) {
         resize_append(talloc_ctx, s, size + 1);
         vsnprintf(s->start + s->len, size + 1, fmt, ap);
     }
