@@ -77,8 +77,7 @@ static int init(struct dec_audio *da, const char *decoder)
     struct ad_lavc_params *opts = mpopts->ad_lavc_params;
     AVCodecContext *lavc_context;
     AVCodec *lavc_codec;
-    struct sh_stream *sh = da->header;
-    struct mp_codec_params *c = sh->codec;
+    struct mp_codec_params *c = da->codec;
 
     struct priv *ctx = talloc_zero(NULL, struct priv);
     da->priv = ctx;

@@ -34,6 +34,7 @@ struct dec_video {
     const struct vd_functions *vd_driver;
     struct mp_hwdec_info *hwdec_info; // video output hwdec handles
     struct sh_stream *header;
+    struct mp_codec_params *codec;
 
     char *decoder_desc;
 
@@ -68,6 +69,10 @@ struct dec_video {
     float initial_decoder_aspect;
 
     double start_pts;
+    double start, end;
+    bool segment_ended;
+    struct demux_packet *new_segment;
+    struct demux_packet *packet;
     bool framedrop_enabled;
     struct mp_image *cover_art_mpi;
     struct mp_image *current_mpi;
