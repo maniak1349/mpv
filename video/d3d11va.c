@@ -90,6 +90,8 @@ struct mp_image *d3d11va_new_ref(ID3D11VideoDecoderOutputView *view,
     mp_image_setfmt(mpi, IMGFMT_D3D11VA);
     mp_image_set_size(mpi, w, h);
     mpi->planes[0] = (void *)surface;
+    mpi->planes[1] = (void *)surface->texture;
+    mpi->planes[2] = (void *)(intptr_t)surface->subindex;
     mpi->planes[3] = (void *)surface->surface;
 
     return mpi;
